@@ -2,48 +2,20 @@ package com.rmuti.datastructure;
 
 public class ArrayListStack {
 
-	private Object elementData[] = new Object[1];
-	private int size = 0; 
-
+	ArrayList list = new ArrayList();
 	public void push(Object e) {
-		ensureCapacity(size+1);
-		elementData[size] = e;
-		size++;
+		list.add(e);
 	}
-
-	public void pop() {
-		Object arr[] = new Object[elementData.length];
-		for (int i = 0; i <= arr.length-1; i++) {
-			arr[i] = elementData[i];
-		}
-		elementData = arr;
-		size--;
+	public Object pop() {
+		Object a = list.get(list.size());
+		list.remove(list.size());
+		return a;
 	}
-
-	public Object peek(){
-		return elementData[size-1];
+	public Object peek() {
+		return list.get(list.size());
 	}
-
-	private void ensureCapacity(int capasity) {
-		if(capasity > elementData.length){
-			Object arr[] = new Object[elementData.length*2];
-			for (int i = 0; i < size; i++) {
-				arr[i] = elementData[i];
-			}
-			elementData = arr;
-		}
+	@Override
+	public String toString() {		
+		return String.valueOf(list);
 	}
-
-	public String toString() {
-		String ret = "[";
-		for (int i = 0; i < elementData.length; i++) {			
-			if(i == elementData.length-1){
-				ret = ret+elementData[i]+"]";
-			}else{
-				ret = ret+elementData[i]+",";
-			}
-		}
-		return ret;
-	}
-
 }
