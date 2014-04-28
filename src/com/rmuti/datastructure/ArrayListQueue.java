@@ -2,43 +2,22 @@ package com.rmuti.datastructure;
 
 public class ArrayListQueue {
 
-	private Object elementData [] = new Object[1];
-	private int size = 0;
+	private ArrayList list = new ArrayList();
 
 	public void enQueue(Object e) {
-		ensureCapacity(size+1);
-		elementData[size] = e;
-		size++;
+		list.add(e);
 	}
-
-	public void deQueue() {
-		for (int i = 0; i < size-1; i++) {
-			elementData[i] = elementData[i+1];
-		}
-		size--;
+	public Object deQueue() {
+		Object a = list.get(0);
+		list.remove(0);
+		return a;
 	}
-	private void ensureCapacity(int capasity){			
-			if(capasity > elementData.length){
-			Object arr[] = new Object[elementData.length*2];
-			for (int i = 0; i < size; i++) {
-				arr[i] = elementData[i];
-			}
-			elementData = arr;
-			}			
+	public String peek() {
+		return (String) list.get(0);
 	}
-	public Object peek() {
-		return elementData[0];
-	}
-	public String toString() {
-		String ret = "[";
-		for (int i = 0; i < size; i++) {			
-			if(i == size-1){
-				ret = ret+elementData[i]+"]";
-			}else{
-				ret = ret+elementData[i]+",";
-			}
-		}
-		return ret;
+	@Override
+	public String toString() {		
+		return String.valueOf(list);
 	}
 
 }
